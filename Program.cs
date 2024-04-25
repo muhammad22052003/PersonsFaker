@@ -23,7 +23,7 @@ namespace PersonFaker
                 /// See the available regions at the link https://github.com/bchavez/Bogus/
 
                 RegionsPackage package = new RegionsPackage();
-                package.AddRegion("ru", "Россия");
+                package.AddRegion("sk", "Slovakian");
                 package.AddRegion("en_US", "United States");
                 package.AddRegion("fr", "France");
                 package.AddRegion("pl", "Poland");
