@@ -1,14 +1,13 @@
 ﻿using Bogus;
-using NameParser.Packages;
-using NameParser.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Person = NameParser.Models.Person;
+using Task_5.Packages;
+using Person = Task_5.Models.Person;
 
-namespace NameParser.Generators
+namespace Task_5.Generators
 {
     public class PersonGenerator
     {

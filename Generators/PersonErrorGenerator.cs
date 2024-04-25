@@ -1,16 +1,15 @@
 ﻿using Bogus;
-using NameParser.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using static NameParser.Generators.PersonErrorGenerator;
-using Person = NameParser.Models.Person;
-using NameParser.Delegates;
+using Task_5.Delegates;
+using Task_5.Models;
+using Person = Task_5.Models.Person;
 
-namespace NameParser.Generators
+namespace Task_5.Generators
 {
     public class PersonErrorGenerator
     {
@@ -24,7 +23,7 @@ namespace NameParser.Generators
         /// Used to store global index data
         public struct GlobalIndexData
         {
-            public Person Human { get; set; }
+            public Models.Person Human { get; set; }
 
             public PropertyInfo Property { get; set; }
 

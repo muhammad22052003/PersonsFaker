@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NameParser.Generators
+namespace Task_5.Generators
 {
     public class Randomizer
     {

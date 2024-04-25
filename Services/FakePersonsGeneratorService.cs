@@ -1,5 +1,5 @@
-﻿using NameParser.Generators;
-using NameParser.Models;
+﻿using Task_5.Generators;
+using Task_5.Models;
 
 namespace Task_5.Services
 {

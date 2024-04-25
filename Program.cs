@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Localization;
-using NameParser.Generators;
-using NameParser.Packages;
 using System.Globalization;
+using Task_5.Generators;
+using Task_5.Packages;
 using Task_5.Services;
 
 namespace PersonFaker

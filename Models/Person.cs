@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NameParser.Models
+namespace Task_5.Models
 {
     public class Person
     {
