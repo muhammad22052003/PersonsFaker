@@ -3,9 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using System.Runtime.Serialization.Formatters.Binary;
 using Task_5.Models;
 using Task_5.Models.RequestsData;
 using Task_5.Services;
+using Task5_PersonsFaker.Helpers;
+using Person = Task_5.Models.Person;
 
 namespace Task_5.Controllers
 {
@@ -59,27 +62,43 @@ namespace Task_5.Controllers
                 pair.PostData.ErrorsSeed = random.Next();
                 pair.PostData.ErrorsValue = (int)random.Next(1000);
             }
-            if(data.More == null)
-            {
-                pair.PostData.More = 0;
-            }
-            else
-            {
-                pair.PostData.More += 10;
-            }
-
 
             var persons = _personGenerator.GenerateFakePersons(region: pair.PostData.Region,
                                                                generateSeed: pair.PostData.GenerationSeed,
                                                                errorSeed: pair.PostData.ErrorsSeed,
                                                                errorsValue: pair.PostData.ErrorsValue,
-                                                               count: pair.PostData.More.Value + 20,
+                                                               count: pair.PostData.More + 20,
                                                                startNumber: 1);
 
 
             pair.Persons = persons;
 
             return View(pair);
+        }
+
+        [HttpPost]
+        public FileResult Export(PostData data)
+        {
+            List<Person> persons = _personGenerator.GenerateFakePersons(region: data.Region,
+                                                               generateSeed: data.GenerationSeed,
+                                                               errorSeed: data.ErrorsSeed,
+                                                               errorsValue: data.ErrorsValue,
+                                                               count: data.DataCount + 20,
+                                                               startNumber: 1);
+
+            
+            string hash = persons.GetHashCode().ToString();
+            string filePath = $"wwwroot\\libraryExports\\{hash}.csv";
+            var personsData = AdapterPerson.ConvertPersonData(persons);
+
+            CsvStreamer.WriteData(personsData, filePath);
+
+            // Прочитайте файл в массив байтов
+            byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
+            string fileName = "table.csv"; // Имя файла для отображения в диалоге сохранения
+
+            // Верните файл пользователю
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
 
 

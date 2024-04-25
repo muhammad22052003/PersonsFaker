@@ -47,6 +47,25 @@ namespace PersonFaker
                 app.UseHsts();
             }
 
+            app.Use(async (context, next) =>
+            {
+                var files = Directory.GetFiles("wwwroot\\libraryExports\\");
+
+                foreach (var file in files)
+                {
+                    FileInfo fileInfo = new FileInfo(file);
+
+                    if(fileInfo.CreationTime > DateTime.Now.AddMinutes(10))
+                    {
+                        fileInfo.Delete();
+                    }
+                }
+
+                await next.Invoke();
+            });
+
+
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

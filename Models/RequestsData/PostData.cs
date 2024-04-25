@@ -28,9 +28,12 @@ namespace Task_5.Models.RequestsData
         public string? IsSubmit { get; set; }
 
         [HtmlAttributeName("IsRandom")]
-        public int? More { get; set; }
+        public int More { get; set; }
 
         [HtmlAttributeName("IsRandom")]
         public string? IsExport { get; set; }
+
+        [HtmlAttributeName("DataCount")]
+        public int DataCount { get; set; }
     }
 }

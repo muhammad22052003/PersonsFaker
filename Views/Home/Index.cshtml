@@ -103,10 +103,13 @@
             </table>
         </div>
         <div class="controller-item">
-            <button type="submit" name="More" value="@Model.PostData.More" class="button-footer">More</button>
+            <button type="submit" name="More" value="@(Model.PostData.More+10)" class="button-footer">More</button>
         </div>
         <div class="controller-item">
-            <button type="submit" name="IsRandom" value="" class="button">Export to CSV</button>
+            <button type="submit" asp-action="export" asp-controller="home" value="" class="button">Export to CSV</button>
+        </div>
+        <div class="controller-item">
+            <input type="hidden" name="DataCount" value="@Model.PostData.More">
         </div>
     </form>
 </div>
