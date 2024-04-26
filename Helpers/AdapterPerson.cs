@@ -8,27 +8,24 @@ namespace Task5_PersonsFaker.Helpers
         {
             List<List<string>> result = new List<List<string>>();
 
-            for (int i = 0; i < persons.Count; i++)
+            result.Add(new List<string>());
+
+            result[0].Add("Index");
+            result[0].Add("Name");
+            result[0].Add("Lastname");
+            result[0].Add("Adress");
+            result[0].Add("Phone");
+            result[0].Add("Zipcode");
+
+            for (int i = 1; i <= persons.Count; i++)
             {
                 result.Add(new List<string>());
-                if(i == 0)
-                {
-                    result[i].Add("Index");
-                    result[i].Add("Name");
-                    result[i].Add("Lastname");
-                    result[i].Add("Adress");
-                    result[i].Add("Phone");
-                    result[i].Add("Zipcode");
-                }
-                else
-                {
-                    result[i].Add(persons[i].IndexNumber.ToString());
-                    result[i].Add(persons[i].FirstName);
-                    result[i].Add(persons[i].LastName);
-                    result[i].Add(persons[i].Adress);
-                    result[i].Add(persons[i].PhoneNumber);
-                    result[i].Add(persons[i].ZipCode);
-                }
+                result[i].Add(persons[i - 1].IndexNumber.ToString());
+                result[i].Add(persons[i - 1].FirstName);
+                result[i].Add(persons[i - 1].LastName);
+                result[i].Add(persons[i - 1].Adress);
+                result[i].Add(persons[i - 1].PhoneNumber);
+                result[i].Add(persons[i - 1].ZipCode);
             }
 
             return result;
