@@ -10,7 +10,8 @@ namespace Task5_PersonsFaker.Helpers
 
             result.Add(new List<string>());
 
-            result[0].Add("Index");
+            result[0].Add("Number");
+            result[0].Add("ID");
             result[0].Add("Name");
             result[0].Add("Lastname");
             result[0].Add("Adress");
@@ -21,6 +22,7 @@ namespace Task5_PersonsFaker.Helpers
             {
                 result.Add(new List<string>());
                 result[i].Add(persons[i - 1].IndexNumber.ToString());
+                result[i].Add(persons[i - 1].UUID.ToString());
                 result[i].Add(persons[i - 1].FirstName);
                 result[i].Add(persons[i - 1].LastName);
                 result[i].Add(persons[i - 1].Adress);

@@ -61,7 +61,7 @@ namespace Task_5.Generators
             return persons;
         }
 
-        public GlobalIndexData GetGlobalIndexData(List<Person> persons, int globalIndex, int skippedProperties = 1)
+        public GlobalIndexData GetGlobalIndexData(List<Person> persons, int globalIndex, int skippedProperties = 2)
         {
             int currentIndex = 0;
             int indexCounter = 0;
@@ -133,7 +133,7 @@ namespace Task_5.Generators
             return errorsIndexes.FirstOrDefault();
         }
 
-        public int GetAllIndexes(Person person, int skippedProperties = 1)
+        public int GetAllIndexes(Person person, int skippedProperties = 2)
         {
             int dataIndexesCount = 0;
 

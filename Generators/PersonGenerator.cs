@@ -25,7 +25,8 @@ namespace Task_5.Generators
 
             Faker<Person> personFaker = new Faker<Person>(RegionsPack.Regions[region]).UseSeed(seed)
                 .RuleFor(p => p.IndexNumber, f => startAutoIncrement++)
-                .RuleFor(p => p.FirstName, f => f.Name.FirstName())
+                .RuleFor(p => p.UUID, f => f.Random.Uuid().ToString())
+                .RuleFor(p => p.FirstName, f => f.Name.FindName())
                 .RuleFor(p => p.LastName, f => f.Name.LastName())
                 .RuleFor(p => p.Adress, f => $"{region}, {f.Address.City()}, {f.Address.StreetSuffix()}, {f.Address.City()}, {f.Address.ZipCode()}")
                 .RuleFor(p => p.Country, f => region)
