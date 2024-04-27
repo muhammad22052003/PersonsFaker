@@ -64,7 +64,7 @@ namespace PersonFaker
                 await next.Invoke();
             });
 
-
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

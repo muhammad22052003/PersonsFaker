@@ -32,5 +32,24 @@ namespace Task5_PersonsFaker.Helpers
 
             return result;
         }
+
+        public static List<List<string>> ConvertPersonData(List<Person> persons, bool withHeaders = true)
+        {
+            List<List<string>> result = new List<List<string>>();
+
+            for (int i = 0; i < persons.Count; i++)
+            {
+                result.Add(new List<string>());
+                result[i].Add(persons[i].IndexNumber.ToString());
+                result[i].Add(persons[i].UUID.ToString());
+                result[i].Add(persons[i].FirstName);
+                result[i].Add(persons[i].LastName);
+                result[i].Add(persons[i].Adress);
+                result[i].Add(persons[i].PhoneNumber);
+                result[i].Add(persons[i].ZipCode);
+            }
+
+            return result;
+        }
     }
 }
