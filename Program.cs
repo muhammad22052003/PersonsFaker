@@ -50,7 +50,7 @@ namespace PersonFaker
                 app.UseHsts();
             }
 
-            app.Use(async (context, next) =>
+            /*app.Use(async (context, next) =>
             {
                 var files = Directory.GetFiles("./wwwroot/libraryExports/");
 
@@ -62,7 +62,7 @@ namespace PersonFaker
                 }
 
                 await next.Invoke();
-            });
+            });*/
 
             app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
