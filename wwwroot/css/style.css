@@ -64,6 +64,7 @@ main {
 }
 
 .data-panel {
+    overflow-x: auto;
     width: 97%;
     height: 100%;
     background-color: #D7CFC9;
@@ -119,12 +120,16 @@ tr, td, th {
     font-weight: 500;
     border: 0px;
     background-color: #F0F4ED;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
     padding-bottom: 20px;
     padding-top: 20px;
     border-radius: 15px
 }
+
+    .button:hover {
+        border: 3px solid #729FD7;
+    }
 
 .button-export {
     margin-left: 20%;

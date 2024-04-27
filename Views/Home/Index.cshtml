@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Task_5.Packages;
+@model RegionsPackage;
+@{
     ViewData["Title"] = "Persons Faker";
     Layout = "_LayoutHome";
 }
@@ -10,7 +12,21 @@
 <div class="control-panel">
     <label class="input-label">Regions</label>
     <select id="region">
-        <option selected value="United States">Uzb</option>
+        @{
+            bool start = false;
+            foreach(var item in Model.Regions)
+            {
+                if (!start)
+                {
+                    <option selected value=@item.Key>@item.Key</option>
+                }
+                else
+                {
+                    <option value=@item.Key>@item.Key</option>
+                }
+                start = true;
+            }
+        }
     </select>
 
     <div class="control-row">
@@ -32,7 +48,7 @@
 
 <div class="buttons-panel">
     <button class="button button-random" id="random" onclick="randomGenerate()">Random</button>
-    <button class="button button-export" id="export" onclick="exportData()" action="~/api/Export">Export</button>
+    <!--<button class="button button-export" id="export" onclick="exportData()" action="~/api/Export">Export</button>-->
 </div>
 
 <div class="data-panel">

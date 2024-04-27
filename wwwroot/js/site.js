@@ -9,6 +9,7 @@ const slider = document.getElementById('errors-slider');
 const field = document.getElementById('errors-value');
 const generationField = document.getElementById('generation-seed');
 const errorsField = document.getElementById('errors-seed');
+const regionRange = document.getElementById('region');
 
 //const getDataUrl = 'https://localhost:7118/api/getdata';
 //const exportUrl = 'https://localhost:7118/api/export'
@@ -16,8 +17,6 @@ const exportUrl = document.getElementById('export-url').value;
 const getDataUrl = document.getElementById('get-data-url').value;
 
 document.addEventListener('DOMContentLoaded', function () {
-    console.log(exportUrl);
-    console.log(getDataUrl);
     reloadTableData();
 }, false);
 
@@ -67,6 +66,15 @@ errorsField.addEventListener("input", async function () {
         return;
     }
 
+    reloadTableData();
+});
+
+regionRange.addEventListener('change', function () {
+    moreDataCount = 0;
+
+    if (generationField.value == '') {
+        return;
+    }
     reloadTableData();
 });
 

@@ -34,10 +34,8 @@ namespace Task_5.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            return View(_fakePersonsGeneratorService._personGenerator.RegionsPack);
         }
-
-        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
