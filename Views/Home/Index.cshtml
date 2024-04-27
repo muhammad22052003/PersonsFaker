@@ -1,121 +1,57 @@
-﻿@using Task_5.Models.RequestsData;
-@model PairData;
-@{
-    ViewData["Title"] = "Home Page";
+﻿@{
+    ViewData["Title"] = "Persons Faker";
     Layout = "_LayoutHome";
 }
 
-<div class="main-panel">
-    <form asp-controller="home" asp-action="index" method="post">
-        <div class="control-panel">
-            <div class="controller-item">
-                <label>Regions : </label>
-                <select name="Region">
-                    @{
-                        foreach (var item in Model.Regions)
-                        {
-                            if (item.Key == Model.PostData.Region)
-                            {
-                                <option selected value="@item.Key">@item.Key</option>
-                            }
-                            else
-                            {
-                                <option value="@item.Key">@item.Key</option>
-                            }
-                        }
-                    }
-                </select>
-                <label>Errors : </label>
-                <input id="error-range" type="range" step="0.25" class="input-range" min="0" max="10">
-                <input id="error-field" type="number" step="0.25" name="ErrorsValue" value="@Model.PostData.ErrorsValue" min="0.0" max="1000.0">
-            </div>
-            <div class="controller-item">
-                <label>Errors seed : </label>
-                <input type="number" value="@Model.PostData.ErrorsSeed" name="ErrorsSeed" value="0" min="0" max="2147483647">
+<div class="header">
+    <h2 class="header-text">Persons Faker</h2>
+</div>
 
-            </div>
-            <div class="controller-item">
-                <label>Generation seed : </label>
-                <input type="number" value="@Model.PostData.GenerationSeed" name="GenerationSeed" value="0" min="0" max="2147483647">
-            </div>
-            <div class="controller-item">
-                <button type="submit" class="button">Submit</button>
-            </div>
-            <div class="controller-item">
-                <button type="submit" name="IsRandom" value="true" class="button">Random</button>
-            </div>
-        </div>
+<div class="control-panel">
+    <label class="input-label">Regions</label>
+    <select id="region">
+        <option selected value="United States">Uzb</option>
+    </select>
 
-        <div class="data-table">
-            <table>
-                <tr class="tr-head">
-                    <td>
-                        Number
-                    </td>
-                    <td>
-                        ID
-                    </td>
-                    <td>
-                        Name
-                    </td>
-                    <td>
-                        Lastname
-                    </td>
-                    <td>
-                        Adress
-                    </td>
-                    <td>
-                        Phone
-                    </td>
-                    <td>
-                        Zipcode
-                    </td>
-                </tr>
-                @{
-                    for (int i = 0; i < Model.Persons.Count; i++)
-                    {
-                        string className = "tr-light";
+    <div class="control-row">
+        <label class="input-label">Errors</label>
+        <input class="input" type="range" id="errors-slider" max="10" step="0.25">
+        <input class="input" type="number" min="0" max="1000" step="0.25" value="0" id="errors-value">
+    </div>
 
-                        if (i % 2 == 0)
-                        {
-                            className = "tr-dark";
-                        }
+    <div class="control-row">
+        <label class="input-label">Errors Seed</label>
+        <input class="input" type="number" min="0" id="errors-seed" value="0">
+    </div>
 
-                        <tr class="@className">
-                            <td>
-                                @Model.Persons[i].IndexNumber
-                            </td>
-                            <td>
-                                @Model.Persons[i].UUID
-                            </td>
-                            <td>
-                                @Model.Persons[i].FirstName
-                            </td>
-                            <td>
-                                @Model.Persons[i].LastName
-                            </td>
-                            <td>
-                                @Model.Persons[i].Adress
-                            </td>
-                            <td>
-                                @Model.Persons[i].PhoneNumber
-                            </td>
-                            <td>
-                                @Model.Persons[i].ZipCode
-                            </td>
-                        </tr>
-                    }
-                }
-            </table>
-        </div>
-        <div class="controller-item">
-            <button type="submit" name="More" value="@(Model.PostData.More+10)" class="button-footer">More</button>
-        </div>
-        <div class="controller-item">
-            <button type="submit" asp-action="export" asp-controller="home" value="" class="button">Export to CSV</button>
-        </div>
-        <div class="controller-item">
-            <input type="hidden" name="DataCount" value="@Model.PostData.More">
-        </div>
-    </form>
+    <div class="control-row">
+        <label class="input-label">Generation Seed</label>
+        <input class="input" type="number" id="generation-seed" value="0">
+    </div>
+</div>
+
+<div class="buttons-panel">
+    <button class="button button-random" id="random" onclick="randomGenerate()">Random</button>
+    <button class="button button-export" id="export" onclick="exportData()" action="~/api/Export">Export</button>
+</div>
+
+<div class="data-panel">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <td>Number</td>
+                <td>UUID</td>
+                <td>Name</td>
+                <td>Lastname</td>
+                <td>Adress</td>
+                <td>Phone</td>
+                <td>Zipcode</td>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+    </table>
+</div>
+<div class="buttons-panel">
+    <button class="button" id="more" onclick="loadMore()">Load More</button>
 </div>

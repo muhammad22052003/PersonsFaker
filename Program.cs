@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using Task_5.Generators;
@@ -37,6 +38,8 @@ namespace PersonFaker
                 return new FakePersonsGeneratorService(personGenerator, personErrorGenerator);
             });
 
+            builder.Services.AddSingleton(builder.Configuration);
+
             WebApplication app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -55,10 +58,7 @@ namespace PersonFaker
                 {
                     FileInfo fileInfo = new FileInfo(file);
 
-                    if(fileInfo.CreationTime > DateTime.Now.AddMinutes(10))
-                    {
-                        fileInfo.Delete();
-                    }
+                    fileInfo.Delete();
                 }
 
                 await next.Invoke();

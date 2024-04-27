@@ -33,7 +33,7 @@ namespace Task5_PersonsFaker.Helpers
             return result;
         }
 
-        public static List<List<string>> ConvertPersonData(List<Person> persons, bool withHeaders = true)
+        public static List<List<string>> ConvertPersonData(List<Person> persons, bool withoutHeaders = true)
         {
             List<List<string>> result = new List<List<string>>();
 

@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Razor.TagHelpers;
-using System.ComponentModel.DataAnnotations;
 
-namespace Task_5.Models.RequestsData
+namespace Task5_PersonsFaker.Models.RequestsData
 {
     public class PostData
     {
@@ -18,19 +16,7 @@ namespace Task_5.Models.RequestsData
         [FromForm(Name = "GenerationSeed")]
         public int GenerationSeed { get; set; }
 
-        [FromForm(Name = "IsRandom")]
-        public string? IsRandom { get; set; }
-
-        [FromForm(Name = "IsSubmit")]
-        public string? IsSubmit { get; set; }
-
         [FromForm(Name = "More")]
         public int More { get; set; }
-
-        [FromForm(Name = "IsExport")]
-        public string? IsExport { get; set; }
-
-        [FromForm(Name = "DataCount")]
-        public int DataCount { get; set; }
     }
 }

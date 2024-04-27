@@ -18,6 +18,5 @@ namespace Task_5.Models
         public string Adress { get; set; }
         public string PhoneNumber { get; set; }
         public string ZipCode { get; set; }
-        public string email { get; set; }
     }
 }

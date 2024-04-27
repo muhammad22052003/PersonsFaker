@@ -7,5 +7,5 @@ using static Task_5.Generators.PersonErrorGenerator;
 
 namespace Task_5.Delegates
 {
-    public delegate void RandomAction(GlobalIndexData globalIndexData, int seed);
+    public delegate string RandomAction(string value, int seed);
 }

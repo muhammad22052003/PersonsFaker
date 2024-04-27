@@ -31,8 +31,7 @@ namespace Task_5.Generators
                 .RuleFor(p => p.Adress, f => $"{region}, {f.Address.City()}, {f.Address.StreetSuffix()}, {f.Address.City()}, {f.Address.ZipCode()}")
                 .RuleFor(p => p.Country, f => region)
                 .RuleFor(p => p.PhoneNumber, f => f.Phone.PhoneNumberFormat())
-                .RuleFor(p => p.ZipCode, f => f.Address.ZipCode())
-                .RuleFor(p => p.email, f => f.Internet.Email());
+                .RuleFor(p => p.ZipCode, f => f.Address.ZipCode());
 
             List<Person> generatedPeople = personFaker.GenerateBetween(count, count);
 
