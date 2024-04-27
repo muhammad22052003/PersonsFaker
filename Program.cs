@@ -52,7 +52,7 @@ namespace PersonFaker
 
             app.Use(async (context, next) =>
             {
-                var files = Directory.GetFiles("./wwwroot/libraryExports/");
+                var files = Directory.GetFiles("wwwroot/libraryExports/");
 
                 foreach (var file in files)
                 {
