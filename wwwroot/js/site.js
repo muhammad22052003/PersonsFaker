@@ -16,6 +16,15 @@ const regionRange = document.getElementById('region');
 const exportUrl = document.getElementById('export-url').value;
 const getDataUrl = document.getElementById('get-data-url').value;
 
+window.addEventListener('wheel', async function () {
+    if (this.window.scrollY + this.window.innerHeight >= this.document.documentElement.scrollHeight) {
+
+        moreDataCount += 10;
+
+        reloadTableData();
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function () {
     reloadTableData();
 }, false);
